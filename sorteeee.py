@@ -42,6 +42,38 @@ def insert_sort(nums):
             nums[pos] = nums[pos-1]
             pos = pos - 1
         nums[pos] = current_value
+    return nums
+def insert_sort_py(nums):
+    n = len(nums)
+    if n == 1:
+        return nums
+
+    for i in range(1,n):
+        for j in range(i,0,-1):
+            if nums[j] < nums[j-1]:
+                nums[j],nums[j-1] = nums[j-1],nums[j]
+    return nums
+
+import random
+nums=random.sample(range(1,100),50)
+#print(insert_sort_py(nums=random.sample(range(1,100),50)))
+
+def shell_sort(nums):
+    n = len(nums)
+    gap = round(n/3)
+    while gap:
+        for i in range(1,n):
+            tmp = nums[i]
+            j = i
+            while j>=gap and nums[j-gap]>tmp:
+                nums[j] = nums[j-gap]
+                j -= gap
+            nums[j] = tmp
+        gap = round(gap/3)
+    return nums
+
+print(shell_sort(nums))
+
 
 
 def loopword(nums):
@@ -61,7 +93,7 @@ def loopword(nums):
 
 
 
-
+'''
 
 if __name__ == '__main__':
     nums = [3,1,5,8,9,2,5,7,4]
@@ -77,4 +109,4 @@ if __name__ == '__main__':
     oop = loopword(words)
     print(oop)
 
-
+'''

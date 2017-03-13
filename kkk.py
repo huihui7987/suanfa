@@ -71,17 +71,61 @@ observations = np.array([[1, 0, 0, 0, 1, 1, 0, 1, 0, 1],
                          [1, 0, 1, 1, 1, 1, 1, 0, 1, 1],
                          [1, 0, 1, 0, 0, 0, 1, 1, 0, 0],
                          [0, 1, 1, 1, 0, 1, 1, 1, 0, 1]])
-
+'''
 priors = [0.6,0.5]
 ss = emMain(priors,observations)
 print(ss)
 
+'''
 
 
+# -*- coding:utf-8 -*-
+def maxnumsOne(num):
+    binNum = bin(num)
+
+    tmp = 1
+    count = 0
+
+    for i in range(2,len(binNum) - 1):
+        if binNum[i] == binNum[i + 1]:
+            tmp += 1
+        if tmp > count and tmp >= 2:
+            count = tmp
+            tmp = 1
+
+    return count
+'''
+try:
+    while True:
+        num = input()
+        s = str(bin(num))
+        temp =''
+        result =''
+        for c in s[2:]:
+            if c == '1':
+                temp += '1'
+                if len(temp)>len(result):
+                    result = temp
+            else:
+                temp  = ''
+        print (len(result))
+except:
+    pass
+'''
+#print(maxnumsOne(11111))
+
+def duplicate(numbers, duplication):
+    # write code here
 
 
+    for i in numbers:
+        if numbers.count(i) > 1:
+            duplication[0] = i
+            return True
 
+        else:
+            return False
 
-
-
+dd = [2,1,3,1,4]
+print(duplicate(dd,[]))
 
