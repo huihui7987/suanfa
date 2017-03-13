@@ -33,6 +33,9 @@ def selection_sort(a_list):
         # a_list[pos_of_max] = temp
         a_list[fill_slot],a_list[pos_of_max]=a_list[pos_of_max],a_list[fill_slot]
 
+###############################
+#####      插入排序        #####
+###############################
 def insert_sort(nums):
 
     for index in range(1,len(nums)):
@@ -54,11 +57,41 @@ def insert_sort_py(nums):
                 nums[j],nums[j-1] = nums[j-1],nums[j]
     return nums
 
-import random
-nums=random.sample(range(1,100),50)
-#print(insert_sort_py(nums=random.sample(range(1,100),50)))
+def binsert_sort(nums):
+    '''
+    折半插入排序
+    :param nums:
+    :return:
+    '''
+    n = len(nums)
+    for i in range(1,n):
+        tmp = nums[i]
+        j = i
+
+        low = 0
+        high = i-1
+
+        while low <= high:
+            mid = round((low+high)/2)#此处注意必须取整数，可以使用round or //2
+            if nums[mid] > tmp:
+                high = mid - 1
+            else:
+                low = mid + 1
+        while j>low:
+            nums[j] = nums[j-1]
+            j -= 1
+        nums[j] = tmp
+    return nums
+
 
 def shell_sort(nums):
+    '''
+    shell sort,借鉴直接插入排序在基本正序时候以及较短时候执行效率高的优点，
+    将nums分为几段，每段进行插入排序，最后整体一次插入排序
+    时间复杂度：N^1.3~N^1.5
+    :param nums:
+    :return:
+    '''
     n = len(nums)
     gap = round(n/3)
     while gap:
@@ -72,7 +105,13 @@ def shell_sort(nums):
         gap = round(gap/3)
     return nums
 
-print(shell_sort(nums))
+
+
+import random
+nums=random.sample(range(1,100),50)
+#print(insert_sort_py(nums=random.sample(range(1,100),50)))
+#print(shell_sort(nums))
+print(binsert_sort(nums))
 
 
 
