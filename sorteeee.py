@@ -77,6 +77,8 @@ def binsert_sort(nums):
                 high = mid - 1
             else:
                 low = mid + 1
+
+        #统一后移元素，插入空位置
         while j>low:
             nums[j] = nums[j-1]
             j -= 1
