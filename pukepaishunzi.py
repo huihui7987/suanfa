@@ -21,7 +21,7 @@ def IsContinuous(numbers):
         countN += ll[j + 1] - ll[j] - 1
 
     if count0 >= countN and countN >= 0:#如果0的个数大于需要的填补个数，则可以构成，否则，False
-        
+
         return True
     return False
 
